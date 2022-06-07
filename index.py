@@ -6,21 +6,24 @@ from flask import render_template
 import random
 
 app = Flask(__name__)
+def p(num):
+    print("수 = "+ num)
+def s(result):
+    print("합계 = "+ result) 
 
 @app.route("/")
 def home():
     return render_template('index.html')
-
 @app.route("/random")                       # index.html에서 이 주소를 접속하여 해당 함수를 실행
 def rand():
     try:
         while(1):
+            global num ,result
             num = random.randrange(1, 5000)
-            result += num
+            result =+ num
         print("수 = "+ num)
         print("합계 = "+ result) 
-        return "0k"
-                           # 함수가 'ok'문자열을 반환함
+        return "0k"                           # 함수가 'ok'문자열을 반환함
     except :
         return "fail"
 
